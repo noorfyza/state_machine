@@ -5,11 +5,12 @@ one:
   person_address: MyText
   person_id: 1
   no_of_romms: 1
-  amount_per_room: 
+  amount_per_room: 1000
 
 two:
   person_name: MyString
   person_address: MyText
   person_id: 1
   no_of_romms: 1
-  amount_per_room: 
+  amount_per_room: 1200
+  aasm_state: 'pre_reserved'

@@ -46,8 +46,16 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to rooms_url
   end
 
-  test "should change room state" do
+  test "should change room state to pre-defined" do
     post rooms_url+'/change_state', params: { room_id: @room.id }
     assert_response :success
+    assert JSON.parse(response.body)['aasm_state'] == 'pre_reserved'
+  end
+
+  test "should change room state to booked" do
+    @room2 = rooms(:two)
+    post rooms_url+'/change_state', params: { room_id: @room2.id }
+    assert_response :success
+    assert JSON.parse(response.body)['aasm_state'] == 'booked'
   end
 end
