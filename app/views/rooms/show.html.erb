@@ -38,7 +38,6 @@ $(document).ready(function() {
   
     $("#test_p").click(function(){
       var room_id = "<%= @room.id %>";
-      alert('You clicked the Hide link');
       $.ajax({
         type:"POST",
         url: "/rooms/change_state",
@@ -46,6 +45,7 @@ $(document).ready(function() {
         data: {room_id: room_id},
         success:function(result){
           $("#state").text(result.aasm_state);
+          alert("Changed the state successfully");
         },
         error:function(jqXHR,exception){
           alert("there is an error in changing state");

@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show edit update destroy ]
-
+  skip_before_action :verify_authenticity_token, :only=> [:change_state]
+  
   # GET /rooms or /rooms.json
   def index
     @rooms = Room.all
